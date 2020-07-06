@@ -250,31 +250,31 @@ the size of the smallest current class is taken as "min_size".</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">upsample</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y_column</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">max_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;Balance classes of the target variable by upsampling all classes to be equal to or larger than &quot;max_size&quot;.</span>
-<span class="sd">       </span>
-<span class="sd">    Classes larger than &quot;max_size&quot; are not affected and will remain at their current size. If &quot;max_size&quot; is ommitted, </span>
-<span class="sd">    the size of the largest class is taken as &quot;max_size&quot;.   </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-    <span class="c1"># get largest current class if not supplied</span>
-    <span class="k">if</span> <span class="n">max_size</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">max_size</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="n">y_column</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-    
-    <span class="c1"># upsample all classes smaller than max_size</span>
-    <span class="k">for</span> <span class="n">class_index</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df_new</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">y_column</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">max_size</span><span class="p">:</span>
-            <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">max_size</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-        
-    <span class="k">return</span> <span class="n">df_new</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+</div>
+    {% endraw %}
 
-    </div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="upsample" class="doc_header"><code>upsample</code><a href="https://github.com/maronr/ds_helpers/tree/master/ds_helpers/training/balance.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upsample</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>y_column</code></strong>:<code>str</code>, <strong><code>max_size</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>random_state</code></strong>:<code>int</code>=<em><code>115</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Balance classes of the target variable by upsampling all classes to be equal to or larger than "max_size".</p>
+<p>Classes larger than "max_size" are not affected and will remain at their current size. If "max_size" is ommitted,
+the size of the largest class is taken as "max_size".</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -457,26 +457,29 @@ the size of the smallest current class is taken as "min_size".</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">balance</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y_column</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">random_state</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;Balance classes of the target variable by up- or downsampling all classes to be equal to &quot;size&quot;.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</div>
+    {% endraw %}
+
+    {% raw %}
     
-    <span class="k">for</span> <span class="n">class_index</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df_new</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">y_column</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">:</span>
-            <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">size</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">size</span><span class="p">:</span>
-            <span class="n">drop_idx</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="o">-</span><span class="n">size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
-            <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_idx</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">df_new</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+<div class="cell border-box-sizing code_cell rendered">
 
-    </div>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="balance" class="doc_header"><code>balance</code><a href="https://github.com/maronr/ds_helpers/tree/master/ds_helpers/training/balance.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>balance</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>y_column</code></strong>:<code>str</code>, <strong><code>size</code></strong>:<code>int</code>, <strong><code>random_state</code></strong>:<code>int</code>=<em><code>115</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Balance classes of the target variable by up- or downsampling all classes to be equal to "size".</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
 

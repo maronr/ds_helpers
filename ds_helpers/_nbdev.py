@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"downsample": "00_training.balance.ipynb"}
+index = {"downsample": "00_training.balance.ipynb",
+         "upsample": "00_training.balance.ipynb",
+         "balance": "00_training.balance.ipynb"}
 
 modules = ["training/balance.py"]
 
