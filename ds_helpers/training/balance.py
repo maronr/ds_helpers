@@ -14,7 +14,7 @@ def downsample(df:pd.DataFrame, y_column:str, random_state:int, min_size:int=Non
     the size of the smallest current class is taken as "min_size".
 
     Paramters
-    ---------
+
     df : pandas dataframe
          Dataframe containing column "y_column".
 
@@ -28,7 +28,7 @@ def downsample(df:pd.DataFrame, y_column:str, random_state:int, min_size:int=Non
                If no value is supplied, min_size will be set to the size of the smallest current class.
 
     Returns
-    -------
+
     new_df : pandas dataframe
              Has the same structure as the input dataframe but classes were balanced by downsampling.
 

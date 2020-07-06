@@ -63,7 +63,8 @@ description: "Various methods to balance training data by target class (label) f
 <p>Balance classes of the target variable by downsampling all classes to be equal to or smaller than "min_size".</p>
 <p>Classes smaller than "min_size" are not affected and will remain at their current size. If "min_size" is ommitted,
 the size of the smallest current class is taken as "min_size".</p>
-<h2 id="Paramters">Paramters<a class="anchor-link" href="#Paramters"> </a></h2><p>df : pandas dataframe
+<p>Paramters</p>
+<p>df : pandas dataframe
      Dataframe containing column "y_column".</p>
 <p>y_column : str
            Name of df column containing the target variable (label).</p>
@@ -71,7 +72,8 @@ the size of the smallest current class is taken as "min_size".</p>
                Random state for reproducibility.</p>
 <p>min_size : int, default=None
            If no value is supplied, min_size will be set to the size of the smallest current class.</p>
-<h2 id="Returns">Returns<a class="anchor-link" href="#Returns"> </a></h2><p>new_df : pandas dataframe
+<p>Returns</p>
+<p>new_df : pandas dataframe
          Has the same structure as the input dataframe but classes were balanced by downsampling.</p>
 
 </div>
